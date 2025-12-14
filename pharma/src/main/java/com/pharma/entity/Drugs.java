@@ -27,7 +27,7 @@ public class Drugs {
 	@Column(name="drug_desc", nullable = false)
 	private String drugDesc;
 	@Column(name="drug_price", nullable = false)
-	private double drugPricce;
+	private double drugPrice;
 	
 	@Column(name="drug_manufactor_date", nullable = false)
 	private LocalDate drugmanufactorDate;
@@ -64,12 +64,12 @@ public class Drugs {
 		this.drugDesc = drugDesc;
 	}
 
-	public double getDrugPricce() {
-		return drugPricce;
+	public double getDrugPrice() {
+		return drugPrice;
 	}
 
-	public void setDrugPricce(double drugPricce) {
-		this.drugPricce = drugPricce;
+	public void setDrugPrice(double drugPrice) {
+		this.drugPrice = drugPrice;
 	}
 
 	public LocalDate getDrugmanufactorDate() {
