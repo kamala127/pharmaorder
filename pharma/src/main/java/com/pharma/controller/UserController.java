@@ -1,16 +1,23 @@
 package com.pharma.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pharma.config.JwtUtil;
 import com.pharma.entity.User;
 import com.pharma.service.UserService;
 
@@ -21,6 +28,12 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 	
 	
 	// Register user
@@ -41,6 +54,27 @@ public class UserController {
                 .body(response);
     }
 		
+	
+	// Login user
+	@PostMapping("/login")
+	public ResponseEntity<?> userLogin(@RequestParam("username") String username,
+			@RequestParam("password") String password){
+
+	        Authentication authentication = authenticationManager.authenticate(
+	                new UsernamePasswordAuthenticationToken(
+	                		username,
+	                		password
+	                )
+	        );
+
+	        String token = jwtUtil.generateToken(authentication.getName());
+
+	        return ResponseEntity.ok(Map.of(
+	                "token", token,
+	                "type", "Bearer"
+	        ));
+	    }
+		
 
 	
 	// Get all Users
@@ -58,4 +92,9 @@ public class UserController {
                 .status(HttpStatus.OK)
                 .body(users);
     }
+	
+	@DeleteMapping("/deleteall")
+	public String deleteAllUser() {
+		return userService.deleteAll();
+	}
 }

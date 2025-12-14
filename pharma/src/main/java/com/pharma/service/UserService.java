@@ -42,4 +42,11 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+    
+    
+    // Delete All Users
+    public String deleteAll() {
+    	userRepository.deleteAll();
+    	return "Deleted";
+    }
 }

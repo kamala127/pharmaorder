@@ -20,6 +20,12 @@ public class User {
 
     @Column(name = "user_name", nullable = false)
     private String userName;
+    
+    @Column(name="first_name", nullable = false)
+    private String firstName;
+    
+    @Column(name="last_name", nullable = false)
+    private String lastName;
 
     @Column(name = "user_email", nullable = false, unique = true)
     private String userEmail;
@@ -109,6 +115,22 @@ public class User {
 
 	public void setRole(RoleType role) {
 		this.role = role;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
     
     
