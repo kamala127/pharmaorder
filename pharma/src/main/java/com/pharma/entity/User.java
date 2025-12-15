@@ -11,7 +11,7 @@ import lombok.ToString;
 
 @ToString(exclude = "userPassword")
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -39,6 +39,7 @@ public class User {
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
     @Enumerated(EnumType.STRING)
+    @Column(name = "role", length = 30)
     private RoleType role;
 
     @PrePersist

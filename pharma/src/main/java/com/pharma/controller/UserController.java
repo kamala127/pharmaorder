@@ -109,4 +109,5 @@ public class UserController {
 	public String deleteAllUser() {
 		return userService.deleteAll();
 	}
+
 }

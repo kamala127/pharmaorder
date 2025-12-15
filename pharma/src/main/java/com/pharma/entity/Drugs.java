@@ -24,6 +24,9 @@ public class Drugs {
 	@Column(name="durg_name",nullable = false)
 	private String drugName;
 	
+	@Column(name="manufacturer", nullable = false)
+	private String manufacturer;
+	
 	@Column(name="drug_desc", nullable = false)
 	private String drugDesc;
 	@Column(name="drug_price", nullable = false)
@@ -86,6 +89,14 @@ public class Drugs {
 
 	public void setDrugexpireDate(LocalDate drugexpireDate) {
 		this.drugexpireDate = drugexpireDate;
+	}
+
+	public String getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
 	}
 
 	
