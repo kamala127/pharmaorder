@@ -1,6 +1,7 @@
 package com.pharma.entity;
 
 import java.time.LocalDate;
+
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -8,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="batch")
@@ -16,8 +18,14 @@ public class Batch {
 	@Id
 	@Column(length = 36)
 	private String batchId;
+	@Column(name="drug_id",nullable = false)
+	@NotNull(message = "Drug Id Can't be Null")
     private String drugId;
+	@Column(name="manufacture_date",nullable = false)
+	@NotNull(message = "Manufacture Date Can't be Null")
     private LocalDate manufactureDate;
+	@Column(name="expiry_date",nullable = false)
+	@NotNull(message = "Expire Date Can't be Null")
     private LocalDate expiryDate;
     
     @PrePersist
