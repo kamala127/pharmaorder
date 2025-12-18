@@ -3,9 +3,9 @@ package com.pharma.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pharma.entity.Batch;
+import com.pharma.entity.Inventory;
 
 @Repository
-public interface BatchRepository extends JpaRepository<Batch, String> {
+public interface InventoryRepository extends JpaRepository<Inventory, String> {
 
 }

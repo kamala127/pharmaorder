@@ -35,5 +35,13 @@ public class BatchService {
 		return response;
 				
 	}
+	
+	
+	// Delete All Batch
+	
+	public String deleteALlBatch() {
+		batchRepository.deleteAll();
+		return "Deleted All Batch!";
+	}
 
 }

@@ -18,13 +18,10 @@ public class Batch {
 	@Id
 	@Column(length = 36)
 	private String batchId;
-	@Column(name="drug_id",nullable = false)
 	@NotNull(message = "Drug Id Can't be Null")
     private String drugId;
-	@Column(name="manufacture_date",nullable = false)
 	@NotNull(message = "Manufacture Date Can't be Null")
     private LocalDate manufactureDate;
-	@Column(name="expiry_date",nullable = false)
 	@NotNull(message = "Expire Date Can't be Null")
     private LocalDate expiryDate;
     
